@@ -1,6 +1,7 @@
 import streamlit as st
 from database import get_db_connection
 from cart import add_to_cart
+from wishlist import add_to_wishlist
 
 def browse_products():
     st.title("Browse Products")
@@ -51,6 +52,8 @@ def browse_products():
                 st.write(f"{product[2]}")
                 if st.button('Add to Cart', key=product[0]):
                     add_to_cart(product[0])
+                if st.button('Add to Wishlist', key=('w' + str(product[0]))):
+                    add_to_wishlist(product[0])
 
         if counter == 2:
             with col2:
@@ -60,6 +63,8 @@ def browse_products():
                 st.write(f"{product[2]}")
                 if st.button('Add to Cart', key=product[0]):
                     add_to_cart(product[0])
+                if st.button('Add to Wishlist', key=('w' + str(product[0]))):
+                    add_to_wishlist(product[0])
 
         if counter == 3:
             with col3:
@@ -70,7 +75,8 @@ def browse_products():
                 counter = 0
                 if st.button('Add to Cart', key=product[0]):
                     add_to_cart(product[0])
+                if st.button('Add to Wishlist', key=('w' + str(product[0]))):
+                    add_to_wishlist(product[0])
         
         counter += 1
 
-        
