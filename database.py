@@ -1,6 +1,7 @@
 import mysql.connector
 import streamlit as st
 
+
 def get_db_connection():
     return mysql.connector.connect(
         host="localhost",
@@ -8,6 +9,7 @@ def get_db_connection():
         password="1234",
         database="serenity_clothing"
     )
+
 
 def test_db_connection():
     try:

@@ -1,6 +1,7 @@
 import streamlit as st
 from database import get_db_connection
 
+
 def add_to_cart(product_id):
     if 'user_id' not in st.session_state:
         st.error("You need to be logged in to add items to the cart.")
@@ -18,7 +19,8 @@ def add_to_cart(product_id):
     if item:
         # If item is already in the cart, update the quantity
         new_quantity = item[0] + 1
-        cursor.execute("UPDATE cart SET quantity = %s WHERE user_id = %s AND product_id = %s", (new_quantity, user_id, product_id))
+        cursor.execute("UPDATE cart SET quantity = %s WHERE user_id = %s AND product_id = %s",
+                       (new_quantity, user_id, product_id))
     else:
         # If item is not in the cart, add it with quantity 1
         cursor.execute("INSERT INTO cart (user_id, product_id, quantity) VALUES (%s, %s, %s)", (user_id, product_id, 1))
@@ -26,6 +28,7 @@ def add_to_cart(product_id):
     conn.commit()
     conn.close()
     st.success("Item added to cart!")
+
 
 def remove_from_cart(product_id):
     if 'user_id' not in st.session_state:
@@ -41,6 +44,7 @@ def remove_from_cart(product_id):
     conn.close()
     st.success("Item removed from cart!")
     st.experimental_rerun()
+
 
 def view_cart():
     st.title("Shopping Cart")
@@ -67,6 +71,7 @@ def view_cart():
     st.write(f"**Total Price: ${total_price}**")
     if st.button("Checkout"):
         confirm_order(total_price)
+
 
 def confirm_order(total_price):
     import random

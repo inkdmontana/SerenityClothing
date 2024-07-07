@@ -3,6 +3,7 @@ from database import get_db_connection
 from cart import add_to_cart
 from wishlist import add_to_wishlist
 
+
 def browse_products():
     st.title("Browse Products")
     search_query = st.text_input("Search for products")
@@ -77,6 +78,5 @@ def browse_products():
                     add_to_cart(product[0])
                 if st.button('Add to Wishlist', key=('w' + str(product[0]))):
                     add_to_wishlist(product[0])
-        
-        counter += 1
 
+        counter += 1

@@ -3,6 +3,7 @@ from database import get_db_connection
 from cart import add_to_cart
 from PIL import Image
 
+
 def show_promotional_products():
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -18,9 +19,12 @@ def show_promotional_products():
 
     st.header('Looking for Tips on Style?')
     st.write('Check out these resources and let us know what you think by contacting us!')
-    st.link_button('Basic Styling', 'https://www.dailyinspirato.com/the-complete-guide-creating-a-basics-wardrobe-that-works-for-you')
-    st.link_button('Finding Your Style', 'https://fashionispsychology.com/trying-on-new-clothes-is-like-trying-on-new-selves/')
+    st.link_button('Basic Styling',
+                   'https://www.dailyinspirato.com/the-complete-guide-creating-a-basics-wardrobe-that-works-for-you')
+    st.link_button('Finding Your Style',
+                   'https://fashionispsychology.com/trying-on-new-clothes-is-like-trying-on-new-selves/')
     st.link_button('Latest Trends', 'https://www.vogue.com/fashion/trends')
+
 
 def show_about_us():
     conn = get_db_connection()
@@ -31,6 +35,7 @@ def show_about_us():
     st.subheader("About Us")
     st.write(about_us_content[0])
 
+
 def show_contact_us():
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -40,8 +45,9 @@ def show_contact_us():
     st.subheader("Contact Us")
     st.write(contact_us_content[0])
 
+
 def homepage():
     st.title("Welcome to Serenity Clothing")
     show_promotional_products()
-    #show_about_us()
-    #show_contact_us()
+    # show_about_us()
+    # show_contact_us()
