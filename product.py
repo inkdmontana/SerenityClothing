@@ -40,10 +40,37 @@ def browse_products():
     products = cursor.fetchall()
     conn.close()
 
+    col1, col2, col3 = st.columns(3)
+    counter = 1
     for product in products:
-        st.image(product[4], width=150)
-        st.write(f"**{product[1]}**")
-        st.write(f"Price: ${product[3]}")
-        st.write(f"{product[2]}")
-        if st.button('Add to Cart', key=product[0]):
-            add_to_cart(product[0])
+        if counter == 1:
+            with col1:
+                st.image(product[4], width=150)
+                st.write(f"**{product[1]}**")
+                st.write(f"Price: ${product[3]}")
+                st.write(f"{product[2]}")
+                if st.button('Add to Cart', key=product[0]):
+                    add_to_cart(product[0])
+
+        if counter == 2:
+            with col2:
+                st.image(product[4], width=150)
+                st.write(f"**{product[1]}**")
+                st.write(f"Price: ${product[3]}")
+                st.write(f"{product[2]}")
+                if st.button('Add to Cart', key=product[0]):
+                    add_to_cart(product[0])
+
+        if counter == 3:
+            with col3:
+                st.image(product[4], width=150)
+                st.write(f"**{product[1]}**")
+                st.write(f"Price: ${product[3]}")
+                st.write(f"{product[2]}")
+                counter = 0
+                if st.button('Add to Cart', key=product[0]):
+                    add_to_cart(product[0])
+        
+        counter += 1
+
+        
