@@ -10,9 +10,11 @@ from contact import contact_form
 from reports import generate_report
 from database import test_db_connection
 
+
 def main():
     st.sidebar.title("Navigation")
-    page = st.sidebar.selectbox("Go to", ["Home", "Browse", "Cart", "Account", "Submit Review", "Wishlist", "Promotional Products", "About Us", "Contact Us", "Reports"])
+    page = st.sidebar.selectbox("Go to", ["Home", "Browse", "Cart", "Account", "Submit Review", "Wishlist",
+                                          "Promotional Products", "About Us", "Contact Us", "Reports"])
 
     # Test database connection on app start
     test_db_connection()
@@ -40,6 +42,7 @@ def main():
     elif page == "Reports":
         generate_report()
 
+
 def account_page():
     st.title("Account")
     choice = st.radio("Choose an option", ["Login", "Register"])
@@ -49,6 +52,7 @@ def account_page():
             st.experimental_rerun()
     elif choice == "Register":
         register_user()
+
 
 if __name__ == "__main__":
     main()

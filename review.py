@@ -1,6 +1,7 @@
 import streamlit as st
 from database import get_db_connection
 
+
 def submit_review(product_id):
     st.title("Submit Review")
     rating = st.slider("Rating", 1, 5, 1)

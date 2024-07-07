@@ -1,6 +1,7 @@
 import streamlit as st
 from database import get_db_connection
 
+
 def login_user():
     st.header("Login")
     email = st.text_input("Email")
@@ -19,6 +20,7 @@ def login_user():
         else:
             st.error("Invalid email or password")
             return False
+
 
 def register_user():
     st.header("Register")

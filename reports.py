@@ -2,6 +2,7 @@ import streamlit as st
 from database import get_db_connection
 import pandas as pd
 
+
 def generate_report():
     st.title("Generate Report")
     start_date = st.date_input("Start Date")
@@ -23,7 +24,8 @@ def generate_report():
         report_data = cursor.fetchall()
         conn.close()
 
-        report_df = pd.DataFrame(report_data, columns=["Product Name", "Units Sold", "Total Sales", "Average Rating", "Customer Reviews"])
+        report_df = pd.DataFrame(report_data, columns=["Product Name", "Units Sold", "Total Sales", "Average Rating",
+                                                       "Customer Reviews"])
         st.write(report_df)
 
         st.bar_chart(report_df.set_index("Product Name")["Units Sold"])
