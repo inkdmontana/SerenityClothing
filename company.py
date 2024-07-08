@@ -34,7 +34,7 @@ def about_us():
 
     st.subheader('Meet the Team')
     team_members = [
-        {"name": "Tony Vazquez", "role": "Backend Developer/Database Administrator",
+        {"name": "Tony Vasquez", "role": "Backend Developer/Database Administrator",
          "bio": "Tony Vasquez is a seasoned backend developer and database administrator known for his expertise in "
                 "architecting scalable solutions and optimizing database performance. With a solid foundation in SQL "
                 "and NoSQL databases, Tony specializes in designing efficient database schemas that ensure data "
