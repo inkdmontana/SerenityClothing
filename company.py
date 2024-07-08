@@ -19,6 +19,15 @@ def about_us():
 
     st.write(content)
 
+    st.subheader('Our Purpose')
+    content2 = ('Our purpose at Serenity is to create clothing that simplifies and enriches our customers\' lives. We '
+                'strive to offer wardrobe staples that are not only stylish but also durable, allowing our customers '
+                'to express themselves effortlessly.')
+
+    st.write(content2)
+
+    st.subheader('Meet the Team')
+
     st.subheader('As a Business')
     cursor.execute("SELECT content FROM about_us")
     about_us_content = cursor.fetchone()
