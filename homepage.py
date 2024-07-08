@@ -19,12 +19,27 @@ def show_promotional_products():
 
     st.header('Looking for Tips on Style?')
     st.write('Check out these resources and let us know what you think by contacting us!')
-    st.link_button('Basic Styling',
-                   'https://www.dailyinspirato.com/the-complete-guide-creating-a-basics-wardrobe-that-works-for-you')
-    st.link_button('Finding Your Style',
-                   'https://fashionispsychology.com/trying-on-new-clothes-is-like-trying-on-new-selves/')
-    st.link_button('Latest Trends', 'https://www.vogue.com/fashion/trends')
 
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.subheader('Basic Styling')
+        st.write('Build your basics wardrobe')
+        st.button('Read more',
+                  on_click='window.open("https://www.dailyinspirato.com/the-complete-guide-creating-a-basics-wardrobe'
+                           '-that-works-for-you")')
+    with col2:
+        st.subheader('Finding Style')
+        st.write('Psychology of fashion')
+        st.button('Explore',
+                  on_click='window.open("https://fashionispsychology.com/trying-on-new-clothes-is-like-trying-on-new'
+                           '-selves/")')
+
+    with col3:
+        st.subheader('Latest Trends')
+        st.write('Stay up to date')
+        st.button('Discover',
+                  on_click='window.open("https://www.vogue.com/fashion/trends")')
 
 def show_about_us():
     conn = get_db_connection()
