@@ -24,12 +24,18 @@ def main():
     elif page == "Browse":
         browse_products()
     elif page == "Cart":
-        view_cart()
+        if 'loggedin' in st.session_state and st.session_state.loggedin:
+            view_cart()
+        else:
+            st.warning('You must be logged in to view the Cart.')
     elif page == "Account":
         account_page()
     elif page == "Submit Review":
-        product_id = st.number_input("Product ID", min_value=1)
-        submit_review(product_id)
+        if 'loggedin' in st.session_state and st.session_state.loggedin:
+            product_id = st.number_input("Product ID", min_value=1)
+            submit_review(product_id)
+        else:
+            st.warning('You must be logged in to submit a review.')
     elif page == "Wishlist":
         view_wishlist()
     elif page == "Promotional Products":
@@ -40,8 +46,10 @@ def main():
         contact_us()
         contact_form()
     elif page == "Reports":
-        generate_report()
-
+        if 'loggedin' in st.session_state and st.session_state.loggedin:
+            generate_report()
+        else:
+            st.warning('You must be logged in to generate reports.')
 
 def account_page():
     st.title("Account")

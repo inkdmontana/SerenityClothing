@@ -15,11 +15,13 @@ def login_user():
         conn.close()
         if user:
             st.session_state.user_id = user[0]
+            st.session_state.loggedin = True
             st.success("Logged in successfully!")
             return True
         else:
             st.error("Invalid email or password")
             return False
+
 
 
 def register_user():

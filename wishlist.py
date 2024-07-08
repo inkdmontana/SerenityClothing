@@ -5,10 +5,9 @@ from database import get_db_connection
 def view_wishlist():
     st.title("Wishlist")
 
-    if "loggedin" in st.session_state:
+    if "loggedin" in st.session_state and st.session_state.loggedin:
         conn = get_db_connection()
         cursor = conn.cursor()
-        # st.session_state.update({"loggedin": False, "user_id": None})
         cursor.execute("""
             SELECT products.product_id, products.name, products.price, products.image_url 
             FROM wishlist 
@@ -27,6 +26,7 @@ def view_wishlist():
 
     else:
         st.warning('You must be logged in to utilize the Wishlist feature.')
+
 
 
 def add_to_wishlist(product_id):
