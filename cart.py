@@ -3,7 +3,7 @@ from database import get_db_connection
 
 
 def add_to_cart(product_id):
-    if 'user_id' not in st.session_state:
+    if 'user_id' not in st.session_state or st.session_state.user_id is None:
         st.error("You need to be logged in to add items to the cart.")
         return
 
@@ -31,7 +31,7 @@ def add_to_cart(product_id):
 
 
 def remove_from_cart(product_id):
-    if 'user_id' not in st.session_state:
+    if 'user_id' not in st.session_state or st.session_state.user_id is None:
         st.error("You need to be logged in to remove items from the cart.")
         return
 
@@ -47,6 +47,10 @@ def remove_from_cart(product_id):
 
 
 def view_cart():
+    if 'user_id' not in st.session_state or st.session_state.user_id is None:
+        st.error("You need to be logged in to view the cart.")
+        return
+
     st.title("Shopping Cart")
     conn = get_db_connection()
     cursor = conn.cursor()

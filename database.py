@@ -6,7 +6,7 @@ def get_db_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="abc123",
+        password="PW123!",
         database="serenity_clothing"
     )
 
@@ -25,3 +25,4 @@ def test_db_connection():
         conn.close()
     except mysql.connector.Error as err:
         st.error(f"Error: {err}")
+

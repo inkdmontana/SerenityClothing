@@ -1,5 +1,5 @@
 import streamlit as st
-from auth import login_user, register_user
+from auth import login_user, register_user, account_page
 from homepage import homepage
 from product import browse_products
 from cart import view_cart
@@ -10,6 +10,19 @@ from contact import contact_form
 from reports import generate_report
 from database import test_db_connection
 
+# Initialize session state variables if not already set
+if 'loggedin' not in st.session_state:
+    st.session_state.loggedin = False
+if 'user_id' not in st.session_state:
+    st.session_state.user_id = None
+if 'user_email' not in st.session_state:
+    st.session_state.user_email = None
+if 'user_name' not in st.session_state:
+    st.session_state.user_name = None
+if 'user_address' not in st.session_state:
+    st.session_state.user_address = None
+if 'user_payment' not in st.session_state:
+    st.session_state.user_payment = None
 
 def main():
     st.sidebar.title("Navigation")
@@ -50,17 +63,6 @@ def main():
             generate_report()
         else:
             st.warning('You must be logged in to generate reports.')
-
-def account_page():
-    st.title("Account")
-    choice = st.radio("Choose an option", ["Login", "Register"])
-
-    if choice == "Login":
-        if login_user():
-            st.experimental_rerun()
-    elif choice == "Register":
-        register_user()
-
 
 if __name__ == "__main__":
     main()
