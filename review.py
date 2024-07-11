@@ -10,7 +10,7 @@ def submit_review(product_id):
     if st.button("Submit"):
         conn = get_db_connection()
         cursor = conn.cursor()
-        cursor.execute("INSERT INTO reviews (product_id, user_id, rating, review_text) VALUES (%s, %s, %s, %s)",
+        cursor.execute("INSERT INTO reviews (product_id, user_id, rating, review) VALUES (%s, %s, %s, %s)",
                        (product_id, st.session_state.user_id, rating, review_text))
         conn.commit()
         conn.close()
